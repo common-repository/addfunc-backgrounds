@@ -1,0 +1,702 @@
+@charset "UTF-8";
+
+
+
+/*
+    F O R M   F I E L D S
+    =====================
+*/
+
+#aFBgMetaBox input,
+#aFBgMetaBox select {
+  margin: 0 0 .6em;
+}
+#aFBgMetaBox textarea {
+  margin: 0;
+}
+#aFBgMetaBox input[type=text],
+#aFBgMetaBox select {
+  height: 25px;
+}
+@media (max-width: 782px){
+  #aFBgMetaBox input[type=text],
+  #aFBgMetaBox select {
+    height: 32px;
+  }
+}
+#aFBgMetaBox input[type=text],
+#aFBgMetaBox textarea {
+  width: 271px;
+}
+@media (max-width: 782px){
+  #aFBgMetaBox input[type=text],
+  #aFBgMetaBox textarea {
+    width: 317px;
+  }
+}
+@media (max-width: 554px){
+  #aFBgMetaBox input[type=text],
+  #aFBgMetaBox textarea {
+    width: 100%;
+  }
+}
+
+
+
+/*
+    B A S I C   C S S
+    =================
+*/
+
+.labelcss {
+  font-weight: 700;
+  vertical-align: top;
+  width: 150px;
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+.fieldcss {
+  width: 100%;
+  max-width: 271px;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+.checkcss {
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+
+
+/*
+    S L I D E R   S W I T C H E S
+    =============================
+    HTML FORMAT:
+
+      <input class="aFswitch" id="example" type="checkbox" value="false">
+      <label class="aFswitch wp-core-ui" for="example">Example
+        <span class="aFswitch" style="display:none;">
+          <b data-default="1" class="wp-ui-notification">OFF</b>
+          <b data-default="0" class="wp-ui-highlight">ON</b>
+        </span>
+      </label>
+
+    The .aFswitch class must be added to the following DOM elements for this switch to render properly:
+      *   `<input>` (must include an `id` and `type="checkbox"`)
+      *   `<label>` (must include a `for` attribute, which equals the id of the `<input>`)
+      *   a `<span>` containing exactly two `<b>` elements (which will be the options of the switch)
+
+    The `<span>` must have `style="display:none;"` on it so it is hidden when this stylesheet is not loaded for whatever reason.
+
+    The `<b>` element serving as the default switch option must include a `data-default` attribute with the value 1. This option will be displayed until the hidden checkbox is checked by clicking on its correspnding `<label>`, at which point the remaining option will be displayed. The switch will not display or function properly if `data-default="1"` is not present. The other option can include the `data-default` attribute with the value 0 for clarity, but this is currently not required. The switch options will display within the switch in the same order they reside in the DOM, so in the above example, "OFF" will be on the left and "ON" will be on the right.
+
+    To add native WordPress admin theme colorization to the option of your choice, either the following optional classes can be used:
+      *    .wp-ui-primary           (includes color and background-color rules)
+      *    .wp-ui-text-primary      (includes color rule)
+      *    .wp-ui-highlight         (includes color and background-color rules)
+      *    .wp-ui-text-highlight    (includes color rule)
+      *    .wp-ui-notification      (includes color and background-color rules)
+      *    .wp-ui-text-notification (includes color rule)
+
+    In order for this to work however, an element with the class .wp-core-ui must be wrapping the option. This can be any parent, grandparent, great grandparent, etc. See the above example.
+
+*/
+
+input[type=checkbox].aFswitch {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  display: none !important;
+}
+label.aFswitch {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding: 0 86px 0 0;
+  margin: 2px 0 6px;
+  box-sizing: border-box;
+}
+label.aFswitch span.aFswitch {
+  background-color: #fff;
+  color: #555;
+  line-height: 1.25;
+  display: inline-block !important;
+  width: 86px;
+  height: 17px;
+  padding: 0!important;
+  margin: -8px 0 0;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  clear: right;
+  cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  overflow: hidden;
+  -webkit-appearance: none;
+  -webkit-box-shadow: inset 0 -1px 2px rgba(0,0,0,.1);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
+  -webkit-transition: all .1s cubic-bezier(0.4, 0, 0.4, 0);
+  transition: all .1s cubic-bezier(0.4, 0, 0.4, 0);
+}
+label.aFswitch span.aFswitch b {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  display: inline-block !important;
+  width: 68px;
+  padding: 1px 2px 4px !important;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-width: 0 0 0 1px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+  box-shadow: inset 0 2px 2px rgba(0,0,0,.1);
+  box-sizing: border-box;
+  position: absolute;
+  top: auto;
+  -webkit-transition: all .1s cubic-bezier(0.4, 0, 0.4, 0);
+  transition: all .1s cubic-bezier(0.4, 0, 0.4, 0);
+}
+label.aFswitch span.aFswitch b:first-child {
+  border-width: 0 1px 0 0;
+  left: 0;
+  -ms-transform: translate(-68px,0px);
+  -webkit-transform: translate(-68px,0px);
+  transform: translate(-68px,0px);
+}
+label.aFswitch span.aFswitch b:last-child {
+  right: 0;
+  -ms-transform: translate(68px,0px);
+  -webkit-transform: translate(68px,0px);
+  transform: translate(68px,0px);
+}
+label.aFswitch span.aFswitch b[data-default="1"] {
+  display: inline-block !important;
+  padding: 0px 2px 4px;
+  position: absolute;
+  top: auto;
+  -ms-transform: translate(0px,0px);
+  -webkit-transform: translate(0px,0px);
+  transform: translate(0px,0px);
+}
+input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b:first-child {
+  -ms-transform: translate(0px,0px);
+  -webkit-transform: translate(0px,0px);
+  transform: translate(0px,0px);
+}
+input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b:last-child {
+  -ms-transform: translate(0px,0px);
+  -webkit-transform: translate(0px,0px);
+  transform: translate(0px,0px);
+}
+input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b,
+input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch > b[data-default="1"] {
+  -ms-transform: translate(-68px,0px);
+  -webkit-transform: translate(-68px,0px);
+  transform: translate(-68px,0px);
+}
+input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch > b + b[data-default="1"] {
+  -ms-transform: translate(68px,0px);
+  -webkit-transform: translate(68px,0px);
+  transform: translate(68px,0px);
+}
+label.aFswitch.aFpre {
+    padding: 0 0 0 92px;
+}
+label.aFswitch.aFpre span.aFswitch {
+    right: auto;
+    left: 0;
+}
+@media screen and (min-width: 500px) {
+  #post-body-content label.aFswitch {
+    width: auto;
+  }
+}
+@media screen and (max-width: 782px) {
+  label.aFswitch {
+    padding: 3px 97px 0 0;
+    margin: 2px 0px 6px;
+  }
+  label.aFswitch.aFpre {
+      padding: 3px 0 0 97px;
+  }
+  label.aFswitch span.aFswitch {
+    width: 90px;
+    height: 25px;
+  }
+  label.aFswitch span.aFswitch b {
+    font-size: 14px;
+    width: 78px;
+    padding: 4px 3px 6px !important;
+  }
+  label.aFswitch span.aFswitch b:first-child {
+    -ms-transform: translate(-64px,0px);
+    -webkit-transform: translate(-64px,0px);
+    transform: translate(-78px,0px);
+  }
+  label.aFswitch span.aFswitch b:last-child {
+    -ms-transform: translate(64px,0px);
+    -webkit-transform: translate(64px,0px);
+    transform: translate(78px,0px);
+  }
+  label.aFswitch span.aFswitch b[data-default="1"] {
+    -ms-transform: translate(0px,0px);
+    -webkit-transform: translate(0px,0px);
+    transform: translate(0px,0px);
+  }
+  input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b:first-child {
+    -ms-transform: translate(0px,0px);
+    -webkit-transform: translate(0px,0px);
+    transform: translate(0px,0px);
+  }
+  input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b:last-child {
+    -ms-transform: translate(0px,0px);
+    -webkit-transform: translate(0px,0px);
+    transform: translate(0px,0px);
+  }
+  input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch b,
+  input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch > b[data-default="1"] {
+    -ms-transform: translate(-64px,0px);
+    -webkit-transform: translate(-64px,0px);
+    transform: translate(-78px,0px);
+  }
+  input[type=checkbox].aFswitch:checked + label.aFswitch span.aFswitch > b + b[data-default="1"] {
+    -ms-transform: translate(64px,0px);
+    -webkit-transform: translate(64px,0px);
+    transform: translate(78px,0px);
+  }
+}
+
+
+
+/*
+    E X P A N D I N G   F I E L D S E T S
+    =====================================
+    FORMAT:
+    <input class="aFexpand" type="checkbox" style="display:none;" id="example" />
+    <fieldset class="aFexpand">
+      <label for="example"><h4>Fieldset Titile</h4></label>
+      [fields]
+    </fieldset>
+*/
+input[type=checkbox].aFexpand {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  display: none !important;
+}
+fieldset.aFexpand {
+  margin: 1.33em 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+fieldset.aFexpand h4 {
+  margin: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+fieldset.aFexpand h4:after {
+  content: "";
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0 5px;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent #444;
+  display: inline-block;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+fieldset.aFexpand label.aFtext {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding: 0 77px 0 0;
+  margin: 2px 0 0px;
+  box-sizing: border-box;
+}
+fieldset.aFexpand input[type=text].aFtext.small-text {
+  height: 20px;
+  padding: 0px 6px 1px !important;
+  margin: -9px 0 0;
+  display: inline-block;
+  float: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+fieldset.aFexpand > div {
+  opacity: 0;
+  height: 0;
+  position: relative;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  pointer-events: none;
+}
+input[type=checkbox].aFexpand:checked + fieldset.aFexpand h4:after {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+}
+input[type=checkbox].aFexpand:checked + fieldset.aFexpand > div {
+  opacity: 1;
+  height: auto;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  pointer-events: initial;
+}
+
+
+
+/*
+    C L E A R   B U T T O N
+    =======================
+*/
+
+.aFclearbttn {
+  margin: 0;
+  position: absolute;
+  top: 0.16em;
+  right: 0;
+}
+@media (max-media: 767px){
+  .aFclearbttn {
+    top: 0.5em;
+  }
+}
+
+
+
+/*
+    S W A T C H E S
+    ===============
+*/
+
+.aFswatches,
+.aFswatches li {
+  word-spacing: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+.aFswatches li {
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #ccc 75%),
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  border: solid 1px #ddd;
+  display: inline-block;
+}
+.aFswatches li span {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  cursor: pointer;
+  margin: 0;
+}
+
+
+
+/*
+    M I N I C O L O R S   C U S T O M I Z A T I O N
+    ===============================================
+*/
+
+.minicolors-panel {
+  background: white;
+  border: solid 1px #ddd;
+  box-shadow: none;
+}
+.minicolors input.aFcolorpikr {
+  padding-top: 3px;
+  padding-left: 36px;
+  box-shadow: none;
+}
+.minicolors .minicolors-swatch {
+  background-position-y: -1px;
+  border: none;
+  border-right: solid 1px #ddd;
+  top: 1px;
+  left: 1px;
+  width: 25px;
+  height: 23px;
+}
+@media (max-width: 782px) {
+  .minicolors input.aFcolorpikr {
+    padding-left: 44px;
+  }
+  .minicolors .minicolors-swatch {
+    background-position-y: 0px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+
+/*
+    S P E C I A L I Z E D
+    =====================
+*/
+
+span.aFup {
+  text-transform: uppercase;
+}
+.aFhide,
+.aFhideTxt {
+  display: none;
+}
+.aFif0,
+.aFif1 {
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.aFif0 li,
+.aFif1 li {
+  display: inline-block;
+}
+.aFif0 li input[type=checkbox],
+.aFif1 li input[type=checkbox] {
+  margin: 0 0 0 12px;
+}
+input[type=checkbox].aFswitch ~ .aFif0,
+input[type=checkbox].aFswitch:checked ~ .aFif1 {
+  opacity: 1;
+}
+input[type=checkbox].aFswitch:checked ~ .aFif0,
+input[type=checkbox].aFswitch ~ .aFif1 {
+  height: 0;
+  opacity: 0;
+}
+
+
+
+.aFexpandr[type=checkbox] + .aFexpand,
+.aFexpandr[type=checkbox] + * + .aFexpand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+}
+.aFexpandr[type=checkbox]:checked + .aFexpand,
+.aFexpandr[type=checkbox]:checked + * + .aFexpand {
+  max-height: 10000px;
+  transition: max-height 0.2s cubic-bezier(1, 0, 1, 0);
+}
+.aFcontractr[type=checkbox] + .aFcontract,
+.aFcontractr[type=checkbox] + * + .aFcontract {
+  max-height: 10000px;
+  overflow: hidden;
+  transition: max-height 0.2s cubic-bezier(1, 0, 1, 0);
+}
+.aFcontractr[type=checkbox]:checked + .aFcontract,
+.aFcontractr[type=checkbox]:checked + * + .aFcontract {
+  max-height: 0;
+  transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
+}
+input.aFtoggle-indicator {
+  display: none;
+}
+input.aFtoggle-indicator + * {
+  display: block;
+  position: relative;
+}
+input.aFtoggle-indicator + * label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+input.aFtoggle-indicator + * label span.toggle-indicator {
+  margin-left: calc(-1rem + -20px);
+  margin-right: 1rem;
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: 0;
+  transform: translate(0px, -50%);
+}
+@media (min-width: 783px) and (max-width: 850px),
+       (min-width: 873px) and (max-width: 960px),
+       (min-width: 996px) {
+  input.aFtoggle-indicator + * label span.toggle-indicator {
+    left: 467px;
+    right: auto;
+  }
+}
+@media (min-width: 556px) and (max-width: 782px) {
+  input.aFtoggle-indicator + * label span.toggle-indicator {
+    left: 506px;
+    right: auto;
+  }
+}
+input.aFtoggle-indicator:checked + * label span.toggle-indicator:before {
+  content: "\f140" !important;
+}
+.aFgroup {
+  background-color: #eee;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.aFxycontrol {
+  background: #fff;
+  width: 99px !important;
+  border: 1px solid #ddd;
+  position: relative;
+}
+.aFxycontrol input {
+  display: none;
+}
+.aFxycontrol label {
+  height: 0;
+  width: 33px;
+  padding: 33px 0 0;
+  overflow: hidden;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+.aFxycontrol label:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.aFxycontrol input[type=radio]:checked+label:before {
+  color: initial;
+  text-shadow: none;
+}
+.aFxycontrol label.aFdiagclock:before {
+  -webkit-transform: translate(-50%,-50%) rotate(45deg);
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+.aFxycontrol label.aFdiagcount:before {
+  -webkit-transform: translate(-50%,-50%) rotate(-45deg);
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+.aFxycontrol span.aFxycoordinates {
+  height: 33px;
+  width: 33px;
+  position: absolute;
+  top: 33px;
+  left: 33px;
+  -webkit-transition: all .2s cubic-bezier(0.15, 0.72, 0.21, 1);
+  transition: all .2s cubic-bezier(0.15, 0.72, 0.21, 1);
+  z-index: 0;
+}
+.aFxycontrol input[value*="l"]:checked ~ span.aFxycoordinates { left: 0; }
+.aFxycontrol input[value*="c"]:checked ~ span.aFxycoordinates { left: 33px; }
+.aFxycontrol input[value*="r"]:checked ~ span.aFxycoordinates { left: 66px; }
+.aFxycontrol input[value*="t"]:checked ~ span.aFxycoordinates { top: 0; }
+.aFxycontrol input[value*="m"]:checked ~ span.aFxycoordinates { top: 33px; }
+.aFxycontrol input[value*="b"]:checked ~ span.aFxycoordinates { top: 66px; }
+label.aFswitch {
+  width: auto;
+  left: 0;
+  right: auto;
+  display: inline-block;
+}
+section {
+  border: 1px solid #eee;
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #ccc 75%),
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 1rem 0;
+  position: relative;
+  -webkit-transition: background-position .2s;
+  transition: background-position .2s;
+}
+section h3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding: 1rem;
+  margin-top: 0;
+  margin-bottom:1rem;
+  margin: 0 -1rem;
+  display: block;
+}
+section:before {
+  content: '';
+  background: rgba(255,255,255,0.95);
+  width: 467px;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+@media (max-width: 782px) {
+  section:before {
+    width: 506px;
+  }
+}
+section .preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  -webkit-transition: background-position .2s;
+  transition: background-position .2s;
+}
+section > * {
+  z-index: 1;
+  position: relative;
+}
+section label:not(.aFswitch) {
+  text-shadow: 0 0 1em #fff;
+}
+.aFprllxpndr[type=checkbox] ~ section .aFprllxpnds,
+.aFprllxpndr[type=checkbox]:checked ~ section .aFprllxcntrx {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.1s linear;
+}
+.aFprllxpndr[type=checkbox]:checked ~ section .aFprllxpnds,
+.aFprllxpndr[type=checkbox] ~ section .aFprllxcntrx {
+  max-height: 4em;
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.1s linear;
+}
+@media (max-width: 506px) {
+  .aFprllxpndr[type=checkbox]:checked ~ section .aFprllxpnds,
+  .aFprllxpndr[type=checkbox] ~ section .aFprllxcntrx {
+    max-height: 7em;
+  }
+}
